@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=430px, initial-scale=1.0">
+<title>The SE Asia Gut Guide 2026, GutPassport</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --green:#1D9E75; --green-dark:#0a2a1a; --green-mid:#155c41;
+  --green-light:#e1f5ee; --green-pale:#f0faf5;
+  --amber:#e8923a; --amber-light:#fdf3ea;
+  --red:#d94f4f; --red-light:#fdf0f0;
+  --sand:#f7f4ef; --sand-2:#f0ede6;
+  --text:#1a1a16; --text-2:#3a3a34; --text-3:#6a6a60;
+  --border:#e5e2db;
+}
+
+.page-hook {
+  text-align:center;
+  font-size:8px;
+  color:var(--text-3);
+  letter-spacing:.08em;
+  padding:8px 18px 4px;
+  font-style:italic;
+}
+.page-hook span { color:var(--green); font-weight:600; font-style:normal; }
+
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body {
+  font-family:'DM Sans',sans-serif;
+  background:#1a1a18;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  padding:14px;
+}
+
+/* Each page, no fixed height, expands to content */
+.page {
+  width:430px;
+  background:#fff;
+  position:relative;
+  border-radius:16px;
+  box-shadow:0 8px 40px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+.page-dark { background:var(--green-dark); }
+.page-cheat { background:var(--green-dark); }
+
+/* Inner padding, less on sides to give horizontal content more room */
+.pi { padding:18px 18px 24px; }
+
+/* Page header strip */
+.ph {
+  display:flex; align-items:center; justify-content:space-between;
+  padding-bottom:9px; margin-bottom:13px;
+  border-bottom:.5px solid var(--border);
+}
+.ph-left { display:flex; align-items:center; gap:6px; }
+.ph-title { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:.18em; color:var(--text-3); }
+.ph-num { font-family:'Playfair Display',serif; font-size:10px; color:var(--text-3); }
+
+/* Footer */
+.pf {
+  padding:7px 18px;
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  font-size:7px; color:#bbb; letter-spacing:.06em;
+  border-top:.5px solid var(--border);
+}
+.pf span:nth-child(2){text-align:center;}
+.pf span:nth-child(3){text-align:right;}
+.pf-dark { color:rgba(255,255,255,.2); border-top-color:rgba(255,255,255,.08); }
+
+/* Typography */
+.eyebrow { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:.22em; color:var(--green); margin-bottom:5px; }
+h1.t { font-family:'Playfair Display',serif; font-size:23px; font-weight:900; line-height:1.18; color:var(--text); margin-bottom:5px; }
+h1.t em { font-style:normal; color:var(--green); }
+h2.st { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; color:var(--text); margin-bottom:5px; }
+p.intro { font-size:10.5px; color:var(--text-2); line-height:1.7; margin-bottom:10px; }
+p.b { font-size:10px; color:var(--text-2); line-height:1.7; }
+.mt4{margin-top:4px;} .mt6{margin-top:6px;} .mt10{margin-top:10px;} .mt14{margin-top:14px;}
+
+/* Stats */
+.stats { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin:10px 0; }
+.stat { background:var(--green-dark); border-radius:8px; padding:9px 5px; text-align:center; }
+.stat-v { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--green); line-height:1; }
+.stat-l { font-size:7.5px; color:rgba(255,255,255,.4); margin-top:3px; line-height:1.3; }
+
+/* Callouts */
+.co { border-radius:8px; padding:9px 11px; margin:7px 0; }
+.co p, .co-text { font-size:10px; line-height:1.68; }
+.co-g { background:var(--green-light); border-left:3px solid var(--green); }
+.co-a { background:var(--amber-light); border-left:3px solid var(--amber); }
+.co-r { background:var(--red-light); border-left:3px solid var(--red); }
+.co-d { background:rgba(255,255,255,.06); border-left:3px solid var(--green); }
+.co-d .co-text { color:rgba(255,255,255,.7); }
+.co-sand { background:var(--sand); border-left:3px solid var(--text-3); }
+.co-label { font-size:7.5px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; margin-bottom:4px; }
+.co-label-g { color:var(--green); }
+.co-label-a { color:var(--amber); }
+.co-label-r { color:var(--red); }
+.co-label-d { color:rgba(255,255,255,.4); }
+
+/* Science vis */
+.sci-vis { display:grid; grid-template-columns:1fr 22px 1fr; gap:0; align-items:center; margin:9px 0; }
+.sci-box { background:var(--sand); border-radius:8px; padding:8px 9px; text-align:center; }
+.sci-box h4 { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--text-3); margin-bottom:5px; }
+.bacts { display:flex; flex-wrap:wrap; gap:3px; justify-content:center; margin-bottom:5px; }
+.bact { font-size:8px; padding:2px 5px; border-radius:20px; font-weight:500; }
+.bact-k { background:#dff0e8; color:#0a5a30; }
+.bact-u { background:#fde8e8; color:#7a0a0a; }
+.sci-res { font-size:8px; color:var(--text-3); line-height:1.4; }
+.sci-arrow { text-align:center; font-size:15px; color:var(--text-3); }
+
+/* Factor cards (heat + jet lag) */
+.factor-card {
+  background:var(--sand); border-radius:8px;
+  padding:9px 11px; margin-bottom:6px;
+  display:flex; gap:9px; align-items:flex-start;
+}
+.factor-em { font-size:18px; flex-shrink:0; padding-top:1px; }
+.factor-title { font-size:10.5px; font-weight:600; color:var(--text); margin-bottom:3px; }
+.factor-body { font-size:9.5px; color:var(--text-2); line-height:1.58; }
+
+/* Spectrum */
+.spectrum { display:flex; gap:0; border-radius:8px; overflow:hidden; border:.5px solid var(--border); margin:8px 0; }
+.sp { flex:1; padding:8px 7px; }
+.sp-g { background:var(--green-pale); border-left:3px solid var(--green); }
+.sp-a { background:var(--amber-light); border-left:3px solid var(--amber); }
+.sp-r { background:var(--red-light); border-left:3px solid var(--red); }
+.sp-tag { display:inline-block; font-size:6.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; padding:2px 5px; border-radius:20px; margin-bottom:4px; }
+.sp-tag-g { background:var(--green-light); color:#0a5a30; }
+.sp-tag-a { background:var(--amber-light); color:#7a4000; }
+.sp-tag-r { background:var(--red-light); color:#7a0a0a; }
+.sp-title { font-family:'Playfair Display',serif; font-size:10px; font-weight:700; color:var(--text); margin-bottom:3px; }
+.sp-list { list-style:none; }
+.sp-list li { font-size:8px; color:var(--text-2); padding:1.5px 0; line-height:1.38; }
+.sp-list li::before { content:'·'; margin-right:3px; font-weight:700; }
+
+/* Big stat */
+.big-stat { background:var(--green-dark); border-radius:8px; padding:11px 13px; display:flex; align-items:center; gap:11px; margin:7px 0; }
+.big-stat-num { font-family:'Playfair Display',serif; font-size:32px; font-weight:900; color:var(--green); line-height:1; flex-shrink:0; }
+.big-stat-text { font-size:9.5px; color:rgba(255,255,255,.62); line-height:1.55; }
+.big-stat-text strong { color:rgba(255,255,255,.88); }
+
+/* Two column comparison */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:7px 0; }
+.col-box { border-radius:8px; overflow:hidden; }
+.col-hdr { padding:6px 8px; font-size:8px; font-weight:700; color:#fff; }
+.col-hdr-g { background:var(--green-mid); }
+.col-hdr-a { background:var(--amber); }
+.col-body { padding:5px 8px; }
+.col-bg-g { background:var(--green-pale); }
+.col-bg-a { background:var(--amber-light); }
+.col-item { font-size:8.5px; color:var(--text-2); padding:2px 0; line-height:1.4; display:flex; gap:4px; }
+.col-item::before { content:'•'; color:var(--green); flex-shrink:0; }
+.col-item-a::before { color:var(--amber); }
+
+/* HORIZONTAL RULE CARDS, new format */
+.rule-list { display:flex; flex-direction:column; gap:5px; margin:8px 0; }
+.rc-h {
+  background:var(--sand); border-radius:8px;
+  padding:10px 12px 10px 14px;
+  position:relative; overflow:hidden;
+}
+.rc-h::before {
+  content:''; position:absolute; top:0; left:0;
+  width:3px; height:100%; background:var(--green);
+}
+.rc-h-top { display:flex; align-items:baseline; gap:8px; margin-bottom:4px; }
+.rc-h-num { font-size:7.5px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:.12em; flex-shrink:0; }
+.rc-h-name { font-family:'Playfair Display',serif; font-size:11.5px; font-weight:700; color:var(--green); line-height:1.2; }
+.rc-h-body { font-size:9.5px; color:var(--text-2); line-height:1.58; }
+.rc-h-why { margin-top:4px; padding-top:4px; border-top:.5px solid var(--border); font-size:8.5px; color:var(--green-mid); font-style:italic; line-height:1.45; }
+
+/* Food cards */
+.food-list { display:flex; flex-direction:column; gap:5px; margin:8px 0; }
+
+/* ── REDESIGNED RULE CARDS v8 ── */
+/* ── RULE CARD TOP ROW (emoji + number) ── */
+.rc2-top-row {
+  display:flex; align-items:center; gap:7px;
+  margin-bottom:4px; margin-top:2px;
+}
+.rc2-em {
+  font-size:18px; line-height:1; flex-shrink:0;
+  background:rgba(29,158,117,.1);
+  border-radius:7px; padding:4px 5px;
+}
+/* Bonus badge for page 10 */
+.bonus-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--green-light); border:1px solid rgba(29,158,117,.3);
+  border-radius:20px; padding:3px 10px; margin-bottom:8px;
+  font-size:8px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.2em; color:var(--green);
+}
+
+.rule-grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin:8px 0; }
+.rc2 { background:var(--sand); border-radius:10px; padding:11px 12px; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+.rc2::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--green); border-radius:10px 10px 0 0; }
+.rc2-num { font-size:7px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:.15em; margin-bottom:3px; margin-top:2px; }
+.rc2-name { font-family:'Playfair Display',serif; font-size:12px; font-weight:700; color:var(--green); line-height:1.2; margin-bottom:5px; }
+.rc2-body { font-size:9px; color:var(--text-2); line-height:1.55; margin-bottom:6px; flex-grow:1; }
+.rc2-why { font-size:8px; color:var(--green-mid); font-style:italic; line-height:1.4; background:rgba(29,158,117,.09); border-radius:4px; padding:4px 6px; margin-top:auto; }
+
+/* ── REDESIGNED FOOD GRID v8 ── */
+.food-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin:8px 0; }
+.fg { background:var(--sand); border-radius:10px; padding:10px 10px; text-align:center; position:relative; overflow:hidden; }
+.fg::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--amber); border-radius:10px 10px 0 0; }
+.fg-r { background:#fff4f4; }
+.fg-r::before { background:var(--red); }
+.fg-a { background:var(--amber-light); }
+.fg-a::before { background:var(--amber); }
+.fg-y { background:#fefce8; }
+.fg-y::before { background:#d4a017; }
+.fg-verd-y { background:#fef9c3; color:#7a5a00; }
+.fg-em { font-size:26px; margin:4px 0 6px; display:block; }
+.fg-name { font-size:9.5px; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:4px; }
+.fg-risk { font-size:8px; color:var(--text-2); line-height:1.45; margin-bottom:5px; }
+.fg-verd { display:inline-block; font-size:7.5px; font-weight:700; padding:2px 7px; border-radius:20px; background:var(--amber-light); color:#7a4000; }
+.fg-verd-r { background:var(--red-light); color:#7a0a0a; }
+
+.fc { display:flex; gap:8px; align-items:flex-start; background:var(--sand); border-radius:8px; padding:8px 10px; }
+.fc-icon { font-size:14px; flex-shrink:0; width:22px; text-align:center; padding-top:1px; }
+.fc-name { font-size:10px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.fc-why { font-size:8.5px; color:var(--text-2); line-height:1.55; }
+.fc-verd { font-size:7.5px; font-weight:700; margin-top:3px; display:inline-block; padding:1px 6px; border-radius:20px; background:var(--amber-light); color:#7a4000; }
+.fc-verd-r { background:var(--red-light); color:#7a0a0a; }
+
+/* COMPACT PROTOCOL, for 7 items on one page */
+.proto-compact { display:flex; flex-direction:column; gap:5px; margin:8px 0; }
+.proto-c-item { display:flex; gap:8px; align-items:stretch; }
+.proto-c-dot {
+  width:26px; height:26px; border-radius:50%;
+  background:var(--green); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:9px; font-weight:700; flex-shrink:0;
+  font-family:'Playfair Display',serif;
+  margin-top:2px;
+}
+.proto-c-dot-a { background:var(--amber); }
+.proto-c-dot-d { background:var(--green-dark); }
+.proto-c-dot-l { background:var(--green-light); color:var(--green); }
+.proto-c-content { flex:1; background:var(--sand); border-radius:8px; padding:7px 10px; }
+.proto-c-day { font-size:7px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--text-3); margin-bottom:1px; }
+.proto-c-title { font-size:10px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.proto-c-body { font-size:8.5px; color:var(--text-2); line-height:1.55; }
+
+/* Dysbiosis management cards */
+.mgmt-card { border-radius:8px; padding:10px 12px; margin-bottom:6px; }
+.mgmt-g { background:var(--green-pale); border:1px solid #b0d8c4; }
+.mgmt-a { background:var(--amber-light); border:1px solid #e5c49a; }
+.mgmt-title { font-size:10.5px; font-weight:600; color:var(--text); margin-bottom:5px; }
+.mgmt-list { list-style:none; }
+.mgmt-list li { font-size:9px; color:var(--text-2); padding:2px 0; line-height:1.45; display:flex; gap:5px; }
+.mgmt-list li::before { content:''; width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+.ml-g li::before { background:var(--green); }
+.ml-a li::before { background:var(--amber); }
+
+/* Recovery kit */
+.kit { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin:8px 0; }
+.ki { background:var(--sand); border-radius:7px; padding:7px 5px; text-align:center; }
+.ki-em { font-size:16px; margin-bottom:3px; }
+.ki-name { font-size:8.5px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.ki-desc { font-size:7.5px; color:var(--text-3); line-height:1.4; }
+
+/* When to see a doctor table */
+.when-table { width:100%; border-collapse:collapse; font-size:8.5px; margin:7px 0; }
+.when-table th { text-align:left; padding:5px 6px; background:var(--green-dark); color:rgba(255,255,255,.65); font-size:7.5px; text-transform:uppercase; letter-spacing:.08em; font-weight:600; }
+.when-table td { padding:5px 6px; border-bottom:.5px solid var(--border); color:var(--text-2); vertical-align:top; line-height:1.4; }
+.when-table tr:last-child td { border-bottom:none; }
+.when-table tr:nth-child(even) td { background:var(--sand); }
+.s-g { color:var(--green-mid); font-weight:700; }
+.s-a { color:var(--amber); font-weight:700; }
+.s-r { color:var(--red); font-weight:700; }
+
+/* Action steps */
+.action-list { display:flex; flex-direction:column; gap:5px; margin:8px 0; }
+.action-item { display:flex; gap:8px; align-items:flex-start; }
+.action-num { width:22px; height:22px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.action-num-a { background:var(--amber); }
+.action-num-d { background:var(--green-dark); }
+.action-body { flex:1; background:var(--sand); border-radius:7px; padding:6px 9px; }
+.action-title { font-size:9.5px; font-weight:600; color:var(--text); margin-bottom:1px; }
+.action-desc { font-size:8.5px; color:var(--text-2); line-height:1.52; }
+
+/* Stall safety */
+.stall-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:8px 0; }
+.stall-col { border-radius:8px; padding:8px 10px; }
+.stall-g { background:var(--green-light); border:1px solid #b0d8c4; }
+.stall-r { background:var(--red-light); border:1px solid #e0b0b0; }
+.stall-hdr { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; }
+.stall-hdr-g { color:var(--green-mid); }
+.stall-hdr-r { color:#8a2020; }
+.stall-item { font-size:8.5px; color:var(--text-2); padding:2px 0; line-height:1.4; display:flex; gap:4px; }
+.stall-item-g::before { content:'+'; color:var(--green); font-weight:700; flex-shrink:0; }
+.stall-item-r::before { content:'–'; color:var(--red); font-weight:700; flex-shrink:0; }
+
+/* Cheat sheet blocks */
+.cheat-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:7px 0; }
+.cb { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:9px; overflow:hidden; }
+.cb-hdr { padding:7px 9px; display:flex; align-items:center; gap:5px; }
+.cb-hdr-g { background:rgba(29,158,117,.32); }
+.cb-hdr-r { background:rgba(217,79,79,.32); }
+.cb-hdr-a { background:rgba(232,146,58,.32); }
+.cb-title { font-size:8.5px; font-weight:700; color:#fff; }
+.cb-title-r { color:#ef9090; }
+.cb-title-a { color:#f8b96a; }
+.cb-body { padding:5px 8px; }
+.cb-item { font-size:8px; color:rgba(255,255,255,.6); padding:2.5px 0; border-bottom:.5px solid rgba(255,255,255,.05); display:flex; gap:5px; line-height:1.4; }
+.cb-item:last-child { border-bottom:none; }
+.cb-item::before { content:'→'; color:var(--green); font-size:8px; flex-shrink:0; }
+.cb-item-r::before { color:#ef9090; }
+.cb-item-a::before { color:#f8b96a; }
+.sos-bar { background:rgba(29,158,117,.1); border:1px solid rgba(29,158,117,.22); border-radius:8px; padding:8px 11px; margin:7px 0; }
+.sos-bar p { font-size:9px; color:rgba(255,255,255,.62); line-height:1.55; }
+.sos-bar strong { color:var(--green); }
+
+/* Cover */
+.cover-inner {
+  padding:22px 22px 28px;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; min-height:700px;
+  position:relative; z-index:1; text-align:center;
+}
+.cover-blob1 { position:absolute; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(29,158,117,.22) 0%,transparent 70%); top:-40px; left:-60px; pointer-events:none; }
+.cover-blob2 { position:absolute; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(29,158,117,.18) 0%,transparent 70%); bottom:0; right:-40px; pointer-events:none; }
+.cover-dots { position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px); background-size:22px 22px; background-position:11px 11px; pointer-events:none; }
+.cover-logo-wrap { display:flex; align-items:center; gap:10px; margin-bottom:18px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:10px 18px; }
+.cover-wordmark { font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:#fff; line-height:1; }
+.cover-tagline { font-size:9px; color:rgba(255,255,255,.4); letter-spacing:.1em; text-transform:uppercase; margin-top:3px; }
+.cover-eyebrow { font-size:8px; color:rgba(255,255,255,.38); letter-spacing:.22em; text-transform:uppercase; margin-bottom:10px; }
+.cover-title { font-family:'Playfair Display',serif; font-size:36px; font-weight:900; color:#fff; line-height:1.1; margin-bottom:4px; }
+.cover-title em { color:#5dd9a5; font-style:normal; }
+.cover-sub { font-size:11px; color:rgba(255,255,255,.45); line-height:1.62; max-width:300px; margin:0 auto 18px; }
+.cover-rule { width:40px; height:2px; background:linear-gradient(90deg,var(--green),#5dd9a5); margin:0 auto 16px; border-radius:1px; }
+.cover-chapters { display:flex; gap:0; border:1px solid rgba(255,255,255,.08); border-radius:8px; overflow:hidden; margin-bottom:16px; }
+.cc { padding:7px 10px; border-right:1px solid rgba(255,255,255,.08); text-align:center; }
+.cc:last-child { border-right:none; }
+.cc-num { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; color:var(--green); line-height:1; }
+.cc-label { font-size:7px; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.26); margin-top:2px; }
+.cover-quote { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:8px; padding:12px 16px; }
+.cover-quote p { font-size:10px; color:rgba(255,255,255,.5); line-height:1.65; font-style:italic; }
+.cover-footer-bar { padding:10px 22px; display:flex; justify-content:space-between; font-size:8px; color:rgba(255,255,255,.18); letter-spacing:.08em; border-top:1px solid rgba(255,255,255,.06); }
+
+/* Reusable small logo SVG inline */
+.logo-sm { width:14px; height:15px; }
+
+@media print {
+  body { background:#000; gap:0; padding:0; }
+  .page { border-radius:0; box-shadow:none; margin:0; }
+  @page { margin:0; size:113mm auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- shared SVG defs -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D9E75"/>
+      <stop offset="100%" stop-color="#5dd9a5"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- helper macro: small logo for page headers -->
+<template id="lsm">
+  <img src="logo.png" alt="GutPassport" height="18">
+</template>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 1, COVER
+══════════════════════════════════════════════════ -->
+<div class="page page-dark">
+  <div class="cover-blob1"></div>
+  <div class="cover-blob2"></div>
+  <div class="cover-dots"></div>
+  <div class="cover-inner">
+    <div class="cover-logo-wrap">
+      <img src="logo.png" alt="GutPassport" height="72">
+      <div><div class="cover-wordmark">GutPassport</div><div class="cover-tagline">Your Gut's Travel Insurance</div></div>
+    </div>
+    <p class="cover-eyebrow">The essential guide for UK travellers</p>
+    <h1 class="cover-title">The SE Asia<br><em>Gut Guide</em></h1>
+    <p class="cover-sub">What the travel blogs never tell you about staying well in Thailand, Vietnam, Bali and beyond</p>
+    <div class="cover-rule"></div>
+    <div class="cover-chapters">
+      <div class="cc"><div class="cc-num">01</div><div class="cc-label">Science</div></div>
+      <div class="cc"><div class="cc-num">02</div><div class="cc-label">Spectrum</div></div>
+      <div class="cc"><div class="cc-num">03</div><div class="cc-label">Prevention</div></div>
+      <div class="cc"><div class="cc-num">04</div><div class="cc-label">Foods</div></div>
+      <div class="cc"><div class="cc-num">05</div><div class="cc-label">Pre-Trip</div></div>
+      <div class="cc"><div class="cc-num">06</div><div class="cc-label">Recovery</div></div>
+    </div>
+    <div class="cover-quote"><p>Most people who feel rough in SE Asia assume the worst. The truth is usually more manageable than that.</p></div>
+  </div>
+  <div class="cover-footer-bar">
+    <span>GUTPASSPORT.COM</span><span>2026 EDITION</span><span>@GUTPASSPORT</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 2, THE SCIENCE (merged)
+     Old pages 2 + 3 combined
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 01, The Science</span></div>
+      <span class="ph-num">02</span>
+    </div>
+
+    <p class="eyebrow">Why it happens</p>
+    <h1 class="t">You weren't unlucky.<br>Your gut just <em>wasn't ready.</em></h1>
+    <p class="intro">Your gut microbiome has spent your entire life adapting to the bacteria in your specific environment. When you land in SE Asia, your gut suddenly meets an entirely different set of organisms which it has zero defence against. This gap is what causes all the trouble, and understanding it now can change how you think about preparation.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-v">40 to 60%</div><div class="stat-l">of UK travellers experience significant gut disruption in SE Asia</div></div>
+      <div class="stat"><div class="stat-v">72 hrs</div><div class="stat-l">average before symptoms appear, often blaming the wrong meal entirely</div></div>
+      <div class="stat"><div class="stat-v">&gt;30</div><div class="stat-l">distinct bacterial species in SE Asia your gut has never encountered</div></div>
+    </div>
+
+    <div class="sci-vis">
+      <div class="sci-box"><h4>Your gut at home</h4><div class="bacts"><span class="bact bact-k">Lactobacillus</span><span class="bact bact-k">Bifidobacterium</span><span class="bact bact-k">Bacteroidetes</span></div><div class="sci-res">Familiar. Strong colonisation resistance.</div></div>
+      <div class="sci-arrow">→</div>
+      <div class="sci-box"><h4>Meets in SE Asia</h4><div class="bacts"><span class="bact bact-u">ETEC</span><span class="bact bact-u">Campylobacter</span><span class="bact bact-u">Salmonella</span></div><div class="sci-res">Unknown. No defence ready.</div></div>
+    </div>
+
+    <div class="co co-g mt4"><div class="co-label co-label-g">Key insight</div><p>It is not that SE Asian food is dirty. Your gut simply has zero immunological memory of these organisms. Locals eat the same food and feel nothing because their microbiome has spent decades building resistance against everything that is new to yours. <strong>The good news is that you can give your microbiome a head start before you even board the plane.</strong></p></div>
+
+    <div style="height:1px;background:var(--border);margin:12px 0"></div>
+    <p class="eyebrow">Two factors nobody warns you about</p>
+
+    <div class="factor-card">
+      <span class="factor-em">🌡</span>
+      <div><div class="factor-title">Bacteria double every 20 minutes at 33 degrees</div><div class="factor-body">Food that looks and smells fine can go from safe to genuinely problematic in two hours at Bangkok temperatures. The "does it look fresh?" test is far less reliable in 34 degrees heat than 14 degrees. Time and temperature are the invisible risk factors.</div></div>
+    </div>
+    <div class="factor-card">
+      <span class="factor-em">✈️</span>
+      <div><div class="factor-title">Jet lag disrupts your gut before you eat anything</div><div class="factor-body">Research from 2016 found that jet lag alone can cause measurable gut microbiome disruption within 48 hours of landing, even before you have eaten a single risky meal. Beneficial bacteria reduce whilst gut permeability increases, which is why so many travellers feel off on day one despite being careful.</div></div>
+    </div>
+
+    <div class="co co-g mt4"><div class="co-label co-label-g">The bottom line</div><p>Being careful about food is only half the answer. The other half is preparing your gut before you land.</p></div>
+  </div>
+  <div class="page-hook">Next: the spectrum of gut disruption, and why most people misread what is actually happening to them <span>→</span></div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 3, THE SPECTRUM (merged)
+     Old pages 4 + 5 combined
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 02, The Spectrum</span></div>
+      <span class="ph-num">03</span>
+    </div>
+
+    <p class="eyebrow">Not everything is food poisoning</p>
+    <h1 class="t">That bloated feeling<br>on day two? Probably<br><em>not food poisoning.</em></h1>
+    <p class="intro">Most travellers come back with one of two stories: "I got food poisoning" or "I was fine." Almost nobody talks about the middle ground, which is where most gut disruption actually happens, and where people suffer without ever understanding what is going on.</p>
+
+    <div class="spectrum">
+      <div class="sp sp-g"><span class="sp-tag sp-tag-g">Very common</span><div class="sp-title">Gut Dysbiosis</div><ul class="sp-list"><li>Bloating, uncomfortable gas and constipation</li><li>Irregular and unpredictable bowel</li><li>Sluggish, heavy, genuinely off</li><li>No fever, no vomiting</li><li>Can ruin 3 to 5 days of your trip</li></ul></div>
+      <div class="sp sp-a"><span class="sp-tag sp-tag-a">Common</span><div class="sp-title">Travellers' Diarrhoea</div><ul class="sp-list"><li>3 or more loose stools per day</li><li>Acute cramping</li><li>Nausea, possible fever</li><li>Linked to a meal</li><li>Rapid onset</li><li>Resolves within 1 to 5 days</li></ul></div>
+      <div class="sp sp-r"><span class="sp-tag sp-tag-r">Less common</span><div class="sp-title">Severe Infection</div><ul class="sp-list"><li>Fever above 38.5 degrees</li><li>Blood in stool</li><li>Severe dehydration</li><li>Beyond 72 hours</li><li>Needs medical care</li></ul></div>
+    </div>
+
+    <div class="big-stat mt4">
+      <div class="big-stat-num">~35%</div>
+      <div class="big-stat-text"><strong>of travellers get constipation rather than diarrhoea in SE Asia.</strong> 3 to 5 days of being constipated in tropical heat, feeling bloated and sluggish while everyone else is at the beach, is not something most travel guides ever prepare you for. An undisrupted gut microbiome is essential for gut motility.</div>
+    </div>
+
+    <div style="height:1px;background:var(--border);margin:10px 0"></div>
+    <p class="eyebrow mt4">Know the difference</p>
+    <h2 class="st">Gut dysbiosis. Your gut is adjusting, not infected.</h2>
+    <p class="b mt4">Gut dysbiosis is microbiome disruption without a specific infection. Your gut bacteria have simply encountered a new environment and have lost their equilibrium, resulting in 3 to 5 days of persistent bloating, constipation and a real sluggishness. Most travellers push through it without realising their gut could have been prepared for this.</p>
+    <div class="co co-g mt6"><div class="co-label co-label-g">Probiotics make a meaningful difference here</div><p>Travellers who start a probiotic 7 days before departure are significantly less likely to experience gut dysbiosis at all, because a better-prepared microbiome has far stronger resistance against the incoming bacteria. When dysbiosis does occur in prepared travellers, it tends to be shorter and considerably milder. <strong>The microbiome you arrive with matters more than most people ever consider.</strong></p></div>
+
+    <div class="two-col mt6">
+      <div class="col-box col-bg-g"><div class="col-hdr col-hdr-g">Gut dysbiosis</div><div class="col-body">
+        <div class="col-item">Gradual onset over 1 to 2 days after arrival</div>
+        <div class="col-item">Bloating that won't shift no matter what you eat</div>
+        <div class="col-item">Constipation, often unexpected in the heat</div>
+        <div class="col-item">No fever, no vomiting, no blood</div>
+        <div class="col-item">Can persist 3 to 5 days and ruin a real chunk of your trip</div>
+      </div></div>
+      <div class="col-box col-bg-a"><div class="col-hdr col-hdr-a">Travellers' diarrhoea</div><div class="col-body">
+        <div class="col-item col-item-a">Rapid onset within hours</div>
+        <div class="col-item col-item-a">3 or more loose stools per 24 hours</div>
+        <div class="col-item col-item-a">Acute cramping, nausea</div>
+        <div class="col-item col-item-a">Possible low-grade fever</div>
+        <div class="col-item col-item-a">Often linked to a specific meal</div>
+      </div></div>
+    </div>
+
+    <p class="b mt6">Getting this distinction right is what actually matters. Treating dysbiosis with Imodium, which slows gut motility further, can often make your constipation worse and extend your discomfort by days. For dysbiosis, the answer is generally water, movement and time. For travellers' diarrhoea, it is oral rehydration solution (ORS) the moment you feel the first sign.</p>
+
+    <div class="co co-a mt6"><div class="co-label co-label-a">The Imodium rule</div><p>If you have no fever and no blood, then Imodium is usually appropriate. However, the presence of fever or blood means it is generally advisable to visit a clinic, as these are signs your body is actively trying to expel an infection. Stopping that process with Imodium may make it worse.</p></div>
+  </div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 4, RULES 1–4 (horizontal format)
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 03, Prevention</span></div>
+      <span class="ph-num">04</span>
+    </div>
+
+    <p class="eyebrow">The playbook</p>
+    <h1 class="t">8 rules. Every country.<br><em>No exceptions.</em></h1>
+    <p class="intro" style="margin-bottom:8px">Precise, science-backed rules that apply across SE Asia. Thailand, Vietnam, Bali, Cambodia, everywhere.</p>
+
+    <div class="rule-grid-2col">
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">🧊</span><span class="rc2-num">Rule 01</span></div>
+        <div class="rc2-name">The Ice Rule</div>
+        <div class="rc2-body">Cylindrical ice with a hole is machine-made from purified water. Crushed or cloudy ice may be tap water, so avoid it in everything.</div>
+        <div class="rc2-why">Freezing does not kill bacteria. It simply pauses them until the ice melts into your drink.</div>
+      </div>
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">👥</span><span class="rc2-num">Rule 02</span></div>
+        <div class="rc2-name">The Queue Rule</div>
+        <div class="rc2-body">A queue means high turnover. Food is cooked continuously and nothing sits in the heat. A quiet stall at peak dinner time is a red flag worth taking seriously.</div>
+        <div class="rc2-why">At 33 degrees, bacteria double every 20 minutes.</div>
+      </div>
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">🥬</span><span class="rc2-num">Rule 03</span></div>
+        <div class="rc2-name">The Garnish Rule</div>
+        <div class="rc2-body">Remove raw garnishes every time: bean sprouts, fresh herbs, chilli. It is usually rinsed in tap water and is where the risk lives.</div>
+        <div class="rc2-why">The cooked dish beneath is fine. Heat kills bacteria. Raw garnishes get none.</div>
+      </div>
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">🍴</span><span class="rc2-num">Rule 04</span></div>
+        <div class="rc2-name">The Cutlery Rule</div>
+        <div class="rc2-body">Always dry wet cutlery with a clean tissue. Washed in tap water and air-dried, any residual moisture on the surface is a risk.</div>
+        <div class="rc2-why">60% of "washed" utensils in SE Asia test positive for coliform bacteria.</div>
+      </div>
+    </div>
+    <div class="co co-g mt6"><div class="co-label co-label-g">Rules 5 to 8 on the next page</div><p>The tap water rule, seafood rule, the acid myth and the single most important rule of all.</p></div>
+  </div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 5, RULES 5–8 (horizontal format)
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 03, Prevention</span></div>
+      <span class="ph-num">05</span>
+    </div>
+
+    <div class="rule-grid-2col" style="margin-top:6px">
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">🚰</span><span class="rc2-num">Rule 05</span></div>
+        <div class="rc2-name">The Tap Rule</div>
+        <div class="rc2-body">Not safe for drinking, making ice, rinsing fruit or brushing teeth. In Bali, toothbrushing with tap water is a documented cause of gut illness. Bottled water for teeth is non-negotiable.</div>
+        <div class="rc2-why">You do not need to swallow it. Bacteria are absorbed through gum tissue.</div>
+      </div>
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">🦐</span><span class="rc2-num">Rule 06</span></div>
+        <div class="rc2-name">The Seafood Rule</div>
+        <div class="rc2-body">Live shellfish from clear, flowing tanks only. Shellfish concentrate whatever bacteria are in the water. A still or murky tank is a genuine risk, so trust your instincts.</div>
+        <div class="rc2-why">Shellfish from contaminated tanks have been linked to Vibrio, Salmonella and norovirus outbreaks across SE Asia.</div>
+      </div>
+      <div class="rc2">
+        <div class="rc2-top-row"><span class="rc2-em">🍋</span><span class="rc2-num">Rule 07</span></div>
+        <div class="rc2-name">The Acid Myth</div>
+        <div class="rc2-body">Lime and chilli do not make food safe. Both have antimicrobial properties at high concentrations, but not at seasoning levels. Som tam is not safe because of the lime.</div>
+        <div class="rc2-why">Killing ETEC requires pH below 4.0. A lime-dressed salad sits at pH 5 to 6.</div>
+      </div>
+      <div class="rc2" style="border:2px solid var(--green);">
+        <div class="rc2-top-row"><span class="rc2-em">🧼</span><span class="rc2-num">Rule 08 ★ Most important</span></div>
+        <div class="rc2-name">The Hands Rule</div>
+        <div class="rc2-body">Soap and hot water before eating is essential. Sanitiser can miss certain norovirus strains and Giardia cysts. Your hands are a primary transmission route in SE Asia.</div>
+        <div class="rc2-why">30 to 40% of gut illness in SE Asia is hand-to-mouth, not from contaminated food directly.</div>
+      </div>
+    </div>
+    <div class="co co-a mt6"><div class="co-label co-label-a">If you follow only one rule, make it Rule 08</div><p>Handwashing with soap and water is the only intervention with evidence against every transmission route simultaneously. Every other rule addresses a specific risk. This one addresses all of them.</p></div>
+  </div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 6, HIGH-RISK FOODS
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 04, High-Risk Foods</span></div>
+      <span class="ph-num">06</span>
+    </div>
+
+    <p class="eyebrow">Know before you order</p>
+    <h1 class="t">Eat everything.<br>Just eat it <em>smart.</em></h1>
+    <p class="intro" style="margin-bottom:8px">This is not a list of things to avoid. We are informing you about some key risks so you can make an informed choice in the moment. SE Asian food culture is extraordinary and you should not miss out due to fear.</p>
+
+    <div style="display:flex;align-items:center;gap:8px;margin:8px 0 4px">
+      <div style="width:12px;height:12px;border-radius:50%;background:var(--red);flex-shrink:0"></div>
+      <span style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--red)">Highest risk</span>
+    </div>
+    <div class="food-grid" style="margin-top:0;margin-bottom:6px">
+      <div class="fg fg-r">
+        <span class="fg-em">🥩</span>
+        <div class="fg-name">Lawar (Bali)</div>
+        <div class="fg-risk">Red lawar contains raw minced pork or blood. A Balinese tradition rather than poor hygiene, but a real risk for travellers. Not always clearly described on menus.</div>
+        <span class="fg-verd fg-verd-r">Ask about raw meat first</span>
+      </div>
+      <div class="fg fg-r">
+        <span class="fg-em">🍢</span>
+        <div class="fg-name">Chicken Satay</div>
+        <div class="fg-risk">Campylobacter is SE Asia's dominant pathogen and comes almost entirely from undercooked poultry. Thick skewers look done when they are not.</div>
+        <span class="fg-verd fg-verd-r">Check for pink at the centre</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin:4px 0">
+      <div style="width:12px;height:12px;border-radius:50%;background:var(--amber);flex-shrink:0"></div>
+      <span style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--amber)">Medium-high risk</span>
+    </div>
+    <div class="food-grid" style="margin-top:0;margin-bottom:6px">
+      <div class="fg fg-a">
+        <span class="fg-em">🥗</span>
+        <div class="fg-name">Som Tam</div>
+        <div class="fg-risk">Raw papaya rinsed in tap water, served cold. Lime does not kill bacteria. Quiet stalls in the heat are the risk.</div>
+        <span class="fg-verd">Freshly made, busy stalls only</span>
+      </div>
+      <div class="fg fg-a">
+        <span class="fg-em">🌱</span>
+        <div class="fg-name">Pre-Cut Fruit</div>
+        <div class="fg-risk">Bacteria double every 20 minutes at 32 degrees. Two hours sitting means thousands of times more bacteria, invisible to the eye and nose.</div>
+        <span class="fg-verd">Buy whole or freshly cut</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin:4px 0">
+      <div style="width:12px;height:12px;border-radius:50%;background:#d4a017;flex-shrink:0"></div>
+      <span style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#9a7010">Medium risk</span>
+    </div>
+    <div class="food-grid" style="margin-top:0">
+      <div class="fg fg-y">
+        <span class="fg-em">🍜</span>
+        <div class="fg-name">Spring Rolls (Vietnam)</div>
+        <div class="fg-risk">Fresh goi cuon to order is usually fine. The risk is nem chua (raw fermented pork), not always listed on menus at local spots.</div>
+        <span class="fg-verd fg-verd-y">Ask about raw pork fillings</span>
+      </div>
+      <div class="fg fg-y">
+        <span class="fg-em">🍦</span>
+        <div class="fg-name">Street Ice Cream</div>
+        <div class="fg-risk">Often made with tap water or unpasteurised dairy. Power cuts cause melt-refreeze cycles that increase bacterial load.</div>
+        <span class="fg-verd fg-verd-y">Prefer packaged or coconut shell</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-hook">Next: the 7-day pre-trip protocol, starting earlier than you think <span>→</span></div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 7, PRE-TRIP ALL 7 STEPS (merged, one page)
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 05, Pre-Trip Protocol</span></div>
+      <span class="ph-num">07</span>
+    </div>
+
+    <p class="eyebrow">Before you fly</p>
+    <h1 class="t">7 days before is more<br>important than <em>day one.</em></h1>
+    <p class="intro" style="margin-bottom:8px">None of this requires giving anything up.</p>
+
+    <div class="proto-compact">
+      <div class="proto-c-item">
+        <div class="proto-c-dot">7</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">Day 7 before departure</div>
+          <div class="proto-c-title">Start a probiotic</div>
+          <div class="proto-c-body">Look for a high CFU count probiotic which is shelf stable without refrigeration. Starting 7 days before departure provides the optimal time to build up your microbiome and develop colonisation resistance before you land. This is what directly reduces the likelihood of gut dysbiosis and helps speed up recovery if you do unfortunately get travellers' diarrhoea.</div>
+        </div>
+      </div>
+      <div class="proto-c-item">
+        <div class="proto-c-dot">5</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">Day 5 before departure</div>
+          <div class="proto-c-title">Add fermented foods daily</div>
+          <div class="proto-c-body">Kefir, live yoghurt, kimchi, kombucha or miso. One serving daily for 5 days directly reinforces your microbiome's density and diversity before it faces a new bacterial environment. This matters because a more densely populated microbiome has stronger colonisation resistance.</div>
+        </div>
+      </div>
+      <div class="proto-c-item">
+        <div class="proto-c-dot">4</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">Day 4 before departure</div>
+          <div class="proto-c-title">Feed your gut bacteria</div>
+          <div class="proto-c-body">Garlic, onions, leeks, slightly unripe bananas, oats, chickpeas and lentils. Prebiotics are the dietary fibre that helps your beneficial bacteria multiply and strengthen before you depart, feeding the bacteria you already have.</div>
+        </div>
+      </div>
+      <div class="proto-c-item">
+        <div class="proto-c-dot">3</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">Day 3 before departure</div>
+          <div class="proto-c-title">Hydrate deliberately</div>
+          <div class="proto-c-body">Your gut's mucus lining, the first physical barrier between pathogens and your gut wall, is 95% water. Aim for 2 to 2.5 litres daily. Long-haul cabin humidity sits at around 10 to 20%, so arriving well-hydrated means your gut barrier is intact rather than already compromised when you land.</div>
+        </div>
+      </div>
+      <div class="proto-c-item">
+        <div class="proto-c-dot">2</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">Day 2 before departure</div>
+          <div class="proto-c-title">Protect your sleep</div>
+          <div class="proto-c-body">Research from 2023 found that even two nights of disrupted sleep measurably reduces beneficial Lactobacillus populations and increases gut permeability. You are crossing 7 time zones regardless. Two good nights before departure tops up the reserves before the jet lag begins.</div>
+        </div>
+      </div>
+      <div class="proto-c-item">
+        <div class="proto-c-dot proto-c-dot-a">✈</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">Travel day, carry-on essentials</div>
+          <div class="proto-c-title">Pack this before you leave</div>
+          <div class="proto-c-body">ORS sachets (at least 6), activated charcoal capsules, your probiotic in carry-on (not hold, temperature affects viability), and a small solid hand soap bar, which is more effective than sanitiser against the pathogens that matter most.</div>
+        </div>
+      </div>
+      <div class="proto-c-item">
+        <div class="proto-c-dot proto-c-dot-l">01</div>
+        <div class="proto-c-content">
+          <div class="proto-c-day">First 48 hours in SE Asia</div>
+          <div class="proto-c-title">Give your gut a gentle start</div>
+          <div class="proto-c-body">Jet lag, dehydration and a disrupted circadian rhythm all increase gut permeability. Your defences are at their lowest point of the entire trip. Stick to hot, freshly cooked food from busy stalls for the first 48 hours. After that, your gut has begun to adapt and your risk profile lowers considerably.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="co co-g mt6"><div class="co-label co-label-g">The single most important thing</div><p>The earlier you kick off your probiotic routine, the stronger your gut armour will be. Starting a week early is the single biggest game-changer for how your stomach handles arrival in SE Asia.</p></div>
+  </div>
+  <div class="page-hook">Next: what to actually do if gut disruption hits despite everything <span>→</span></div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 8, RECOVERY
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 06, Recovery</span></div>
+      <span class="ph-num">08</span>
+    </div>
+
+    <p class="eyebrow">When it hits</p>
+    <h1 class="t">You did everything right.<br><em>Here's exactly what to do.</em></h1>
+    <p class="intro" style="margin-bottom:8px">Most cases resolve within 48 to 72 hours. How you manage the first 72 determines whether you spend two days off your feet or four, and knowing which condition you are dealing with changes the approach entirely.</p>
+
+    <div class="mgmt-card mgmt-g">
+      <div class="mgmt-title">🟢 Gut dysbiosis: bloating, constipation, feeling off</div>
+      <ul class="mgmt-list ml-g">
+        <li>Water, fruit, movement and prebiotic foods throughout the day</li>
+        <li>Do NOT use Imodium. It slows motility which is already the core problem here</li>
+        <li>Avoid heavy or fried food and lean on plain cooked vegetables and fruit instead</li>
+        <li>Expect this to take 3 to 5 days. It is a real portion of your trip, but preparation shortens it</li>
+        <li>If you started a probiotic before departure, keep taking it. It actively speeds up recovery</li>
+      </ul>
+    </div>
+    <div class="mgmt-card mgmt-a">
+      <div class="mgmt-title">🟡 Travellers' diarrhoea, acute onset, 3+ loose stools</div>
+      <ul class="mgmt-list ml-a">
+        <li>ORS immediately, not after it gets bad. Take it at the first sign</li>
+        <li>Rest completely and follow the BRAT diet (Banana, Rice, Apple, Toast)</li>
+        <li>Imodium is appropriate only if there is no fever and no blood in the stool</li>
+        <li>If you started a probiotic before departure, your gut was better positioned going into this. Keep taking it throughout recovery as it actively supports your gut flora as it fights back</li>
+      </ul>
+    </div>
+
+    <h2 class="st mt10">Your recovery kit, 7-Eleven and pharmacy</h2>
+    <div class="kit mt6">
+      <div class="ki"><div class="ki-em">💊</div><div class="ki-name">ORS Sachets</div><div class="ki-desc">First priority. Activates gut water absorption in a way plain water simply cannot.</div></div>
+      <div class="ki"><div class="ki-em">⚫</div><div class="ki-name">Ca-R-Bon</div><div class="ki-desc">Activated charcoal can bind bacterial toxins. Do not take alongside other medications.</div></div>
+      <div class="ki"><div class="ki-em">🥤</div><div class="ki-name">Pocari Sweat</div><div class="ki-desc">At every 7-Eleven. Better electrolyte profile than water. Good between ORS sachets.</div></div>
+    </div>
+    <div class="kit">
+      <div class="ki"><div class="ki-em">🍌</div><div class="ki-name">Banana + Rice</div><div class="ki-desc">BRAT diet basics. Bananas firm the gut. Plain rice gives energy without irritation.</div></div>
+      <div class="ki"><div class="ki-em">🦠</div><div class="ki-name">Yakult</div><div class="ki-desc">Available at 7-Eleven. Live bacteria to begin repopulating gut flora. A support tool, not a treatment.</div></div>
+      <div class="ki"><div class="ki-em">💊</div><div class="ki-name">Imodium</div><div class="ki-desc">Only if no fever AND no blood in the stool. Not appropriate for gut dysbiosis.</div></div>
+    </div>
+
+    <div class="co co-a mt6"><div class="co-label co-label-a">The Imodium rule, read before you take it</div><p>If your illness involves fever above 38 degrees or blood in the stool, then your body is actively trying to expel a bacterial infection. Stopping that process with Imodium keeps the bacteria inside longer and makes things worse. No fever and no blood: Imodium is safe. Either present: clinic instead.</p></div>
+  </div>
+  <div class="page-hook">Next: knowing when to stop self-managing and when a clinic is the right call <span>→</span></div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 9, WHEN TO SEE A DOCTOR
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">Chapter 06, Recovery</span></div>
+      <span class="ph-num">09</span>
+    </div>
+
+    <p class="eyebrow">Know when to stop self-managing</p>
+    <h1 class="t">When to see<br><em>a doctor.</em></h1>
+    <p class="b mt6">Most cases do not need a clinic. But recognising the signals early, rather than simply pushing through, matters more than most people think.</p>
+
+    <table class="when-table mt6">
+      <thead><tr><th>Symptom</th><th>Level</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Bloating, constipation, off feeling, no fever</td><td><span class="s-g">Dysbiosis</span></td><td>Water, fruit, movement. 3 to 5 days. No Imodium.</td></tr>
+        <tr><td>Loose stools, mild nausea, no fever</td><td><span class="s-g">Mild TD</span></td><td>ORS, rest, BRAT diet. Monitor 24 hours.</td></tr>
+        <tr><td>6 or more stools per day, vomiting</td><td><span class="s-a">Moderate</span></td><td>ORS aggressively. Full rest. Doctor if not improving in 24 hours.</td></tr>
+        <tr><td>Fever above 38.5 degrees with diarrhoea</td><td><span class="s-r">See doctor</span></td><td>No Imodium. Go to a clinic: bacterial infection pattern requiring evaluation.</td></tr>
+        <tr><td>Blood or mucus in stool</td><td><span class="s-r">See doctor</span></td><td>Go immediately. Possible dysentery: needs medical treatment, not self-care.</td></tr>
+        <tr><td>No improvement after 72 hours</td><td><span class="s-r">See doctor</span></td><td>Could be Giardia (parasitic) which requires a prescription antiparasitic to clear.</td></tr>
+        <tr><td>Confusion, no urination for 8+ hours</td><td><span class="s-r">Emergency</span></td><td>Hospital immediately. Severe dehydration is genuinely dangerous.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="st mt10">The first hour action plan</h2>
+    <p class="b mt4">Most people make it worse by panicking or ignoring the early signs. The first hour matters more than the next 24.</p>
+    <div class="action-list mt6">
+      <div class="action-item"><div class="action-num">1</div><div class="action-body"><div class="action-title">Stop eating, water only</div><div class="action-desc">Your gut needs to stop processing new food so it can focus on what is already inside it. Do not try to eat through it.</div></div></div>
+      <div class="action-item"><div class="action-num">2</div><div class="action-body"><div class="action-title">Start ORS immediately, not after it gets bad</div><div class="action-desc">Dissolve a sachet the moment you feel the first signs. The window for preventing severe dehydration is much earlier than most people think.</div></div></div>
+      <div class="action-item"><div class="action-num action-num-a">3</div><div class="action-body"><div class="action-title">Check your temperature and note your symptoms</div><div class="action-desc">Above 38.5 degrees means clinic, not self-treating. Blood or mucus means go immediately regardless of temperature.</div></div></div>
+      <div class="action-item"><div class="action-num action-num-a">4</div><div class="action-body"><div class="action-title">Tell someone where you are</div><div class="action-desc">If you are travelling solo, message a friend or hostel reception. Serious dehydration can cause confusion quickly so you want someone to be aware.</div></div></div>
+      <div class="action-item"><div class="action-num action-num-d">5</div><div class="action-body"><div class="action-title">Rest, keep drinking ORS, reassess at 24 hours</div><div class="action-desc">Genuinely improving: continue self-managing. No meaningful improvement or worsening: clinic time. Do not push that decision to 48 hours.</div></div></div>
+    </div>
+  </div>
+  <div class="page-hook">Next: a quick visual check before you order from any stall <span>→</span></div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 10, STALL SAFETY + WHAT TO CARRY
+══════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pi">
+    <div class="ph">
+      <div class="ph-left"><img src="logo.png" alt="GutPassport" height="18"><span class="ph-title">⭐ Bonus</span></div>
+      <span class="ph-num">10</span>
+    </div>
+
+    <div class="bonus-badge">⭐ Bonus</div>
+    <p class="eyebrow">Extra for you</p>
+    <h1 class="t">The 5-minute<br><em>stall safety check.</em></h1>
+    <p class="intro" style="margin-bottom:8px">Run through this before ordering from any stall. You do not need every green signal, but three or more red flags at the same stall and the queue a few doors down is worth a look.</p>
+
+    <div class="stall-grid">
+      <div class="stall-col stall-g">
+        <div class="stall-hdr stall-hdr-g">Good signs</div>
+        <div class="stall-item stall-item-g">Queue of locals at peak times</div>
+        <div class="stall-item stall-item-g">Food cooked fresh over high heat</div>
+        <div class="stall-item stall-item-g">Raw and cooked ingredients kept separate</div>
+        <div class="stall-item stall-item-g">Food visibly steaming when served</div>
+        <div class="stall-item stall-item-g">Covered storage for uncooked items</div>
+        <div class="stall-item stall-item-g">Clean and dry work surfaces and utensils</div>
+      </div>
+      <div class="stall-col stall-r">
+        <div class="stall-hdr stall-hdr-r">Walk away if you see</div>
+        <div class="stall-item stall-item-r">Pre-cooked food sitting uncovered in heat</div>
+        <div class="stall-item stall-item-r">Raw and cooked handled with same utensils</div>
+        <div class="stall-item stall-item-r">Completely empty stall during busy hours</div>
+        <div class="stall-item stall-item-r">Food that smells sour, fermented or off</div>
+        <div class="stall-item stall-item-r">Flies settled on food that is not covered</div>
+        <div class="stall-item stall-item-r">Seafood that smells even slightly off</div>
+      </div>
+    </div>
+
+    <div class="co co-g mt6"><div class="co-label co-label-g">Remember, the local standard is generally high</div><p>SE Asian street food culture takes hygiene seriously. The vast majority of street food is safe when freshly cooked over high heat and served immediately. These signals are about spotting the exceptions, not about avoiding the food.</p></div>
+
+    <h2 class="st mt10">Always carry these in SE Asia</h2>
+    <div style="background:var(--sand);border-radius:8px;padding:10px 12px;margin-top:7px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+        <div style="font-size:9px;color:var(--text-2);padding:2px 0">💊 ORS sachets (pack at least 6)</div>
+        <div style="font-size:9px;color:var(--text-2);padding:2px 0">⚫ Activated charcoal capsules</div>
+        <div style="font-size:9px;color:var(--text-2);padding:2px 0">🧼 Small solid hand soap bar</div>
+        <div style="font-size:9px;color:var(--text-2);padding:2px 0">🧻 Pocket tissue pack for cutlery</div>
+        <div style="font-size:9px;color:var(--text-2);padding:2px 0">🌡 Small digital thermometer</div>
+        <div style="font-size:9px;color:var(--text-2);padding:2px 0">💊 Probiotic, carry-on always</div>
+      </div>
+    </div>
+
+    <p class="b mt10">The thermometer is the thing most people forget. If you cannot tell whether you have a fever, then you cannot make the right call about whether to see a doctor, and that decision matters more than anything else in this guide.</p>
+  </div>
+  <div class="page-hook">Final page: your quick reference to screenshot and save offline <span>→</span></div>
+  <div class="pf"><span>THE SE ASIA GUT GUIDE 2026</span><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 11, CHEAT SHEET
+══════════════════════════════════════════════════ -->
+<div class="page page-cheat">
+  <div class="pi">
+    <div style="text-align:center;margin-bottom:10px">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:5px">
+        <img src="logo.png" alt="GutPassport" height="52">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:#fff">GutPassport</div>
+      </div>
+      <div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.18em;text-transform:uppercase">Quick Reference · Screenshot this · Save it offline</div>
+    </div>
+
+    <div class="cheat-grid">
+      <div class="cb">
+        <div class="cb-hdr cb-hdr-g"><span style="font-size:12px">🛡</span><span class="cb-title">8 rules, always</span></div>
+        <div class="cb-body">
+          <div class="cb-item">Cylindrical ice with hole only. No hole = no ice.</div>
+          <div class="cb-item">Queue = high turnover = fresher food.</div>
+          <div class="cb-item">Remove raw garnishes. Every dish, every time.</div>
+          <div class="cb-item">Wipe wet cutlery with a tissue first.</div>
+          <div class="cb-item">Bottled water for teeth. Always.</div>
+          <div class="cb-item">Shellfish from flowing tanks only.</div>
+          <div class="cb-item">Lime and chilli do not make food safe.</div>
+          <div class="cb-item">Soap and water before eating. Always.</div>
+        </div>
+      </div>
+      <div class="cb">
+        <div class="cb-hdr cb-hdr-r"><span style="font-size:12px">⚠️</span><span class="cb-title cb-title-r">Order with care</span></div>
+        <div class="cb-body">
+          <div class="cb-item cb-item-r">Som tam, freshly made, busy stalls only</div>
+          <div class="cb-item cb-item-r">Chicken satay, check no pink at centre</div>
+          <div class="cb-item cb-item-r">Lawar (Bali), ask about raw meat</div>
+          <div class="cb-item cb-item-r">Pre-cut fruit, buy whole or freshly cut</div>
+          <div class="cb-item cb-item-r">Spring rolls (Vietnam), ask about pork</div>
+          <div class="cb-item cb-item-r">Roadside ice cream, prefer packaged</div>
+          <div class="cb-item cb-item-r">Shellfish from still/murky tanks, avoid</div>
+        </div>
+      </div>
+      <div class="cb">
+        <div class="cb-hdr cb-hdr-a"><span style="font-size:12px">🔬</span><span class="cb-title cb-title-a">Dysbiosis vs TD</span></div>
+        <div class="cb-body">
+          <div class="cb-item cb-item-a">Bloating/constipation = dysbiosis, not food poisoning</div>
+          <div class="cb-item cb-item-a">35% get constipation, not diarrhoea</div>
+          <div class="cb-item cb-item-a">Dysbiosis: gradual, no fever, 3 to 5 days</div>
+          <div class="cb-item cb-item-a">TD: acute onset, 3 or more loose stools, possible fever</div>
+          <div class="cb-item cb-item-a">Dysbiosis: no Imodium. Water, movement and time.</div>
+          <div class="cb-item cb-item-a">TD: ORS immediately, BRAT diet</div>
+          <div class="cb-item cb-item-a">Jet lag alone can cause dysbiosis within 48 hours of landing</div>
+        </div>
+      </div>
+      <div class="cb">
+        <div class="cb-hdr cb-hdr-g"><span style="font-size:12px">✈️</span><span class="cb-title">Before you fly</span></div>
+        <div class="cb-body">
+          <div class="cb-item">Day 7: Start probiotic. Not the day you fly.</div>
+          <div class="cb-item">Day 5: Kefir, live yoghurt or kimchi daily</div>
+          <div class="cb-item">Day 4: Garlic, onions, leeks, banana</div>
+          <div class="cb-item">Day 3: 2 to 2.5L water. Gut lining is 95% water.</div>
+          <div class="cb-item">Day 2: Protect your sleep.</div>
+          <div class="cb-item">Travel day: ORS, charcoal, soap bar</div>
+          <div class="cb-item">First 48hrs: Hot cooked food only</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sos-bar mt6">
+      <p><strong>See a doctor:</strong> Fever above 38.5 degrees · Blood in stool · No improvement at 72 hours · No urination 8+ hours · Confusion or dizziness. These are beyond self-management, find a clinic.</p>
+    </div>
+  </div>
+  <div style="text-align:center;padding:6px 18px 2px;font-size:9px;color:rgba(255,255,255,.3);font-style:italic;letter-spacing:.03em">Share this with whoever you're travelling with</div>
+  <div class="pf pf-dark"><span>GUTPASSPORT.COM</span><span>@GUTPASSPORT · 2026</span><span>FREE TO SHARE</span></div>
+</div>
+
+</body>
+</html>
